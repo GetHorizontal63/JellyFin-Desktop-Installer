@@ -1,0 +1,296 @@
+@echo off
+setlocal enabledelayedexpansion
+
+REM Jellyfin Desktop App Installer
+
+echo⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⣴⣶⣶⣶⣶⣶⣶⣤⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+echo⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⡀⢰⣿⣿⣿⣿⣿⣿⣿⣿⠿⢃⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+echo⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣾⣿⣿⡈⠻⢿⣿⠿⣿⣿⣿⠇⣴⣿⣿⣦⣄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+echo⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣾⣿⣿⣿⣿⣶⡆⠀⠀⠀⠀⠉⠀⢿⣿⣿⣿⣿⣷⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+echo⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⣿⣿⣿⣿⣿⠿⠃⠀⠀⠀⠀⠀⠀⠀⠙⢛⣉⣍⡛⢿⡄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+echo⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣴⣶⣄⣉⠛⣛⡉⠁⠀⠀⣀⣤⣶⣦⣤⣀⣶⠄⣿⣿⣿⣿⣾⠋⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+echo⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⣿⣿⣿⣿⣿⣿⠇⠀⠀⣸⠛⠉⠉⠙⣿⣿⣿⡆⢿⣿⣿⣿⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+echo⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠘⣿⣿⣿⣿⣿⠟⠀⠀⠀⠁⠀⠀⠀⠀⢸⣿⣿⣿⣮⡻⢿⣿⠟⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+echo⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠟⢋⣩⣭⣉⠀⠀⠀⠀⠀⠀⠀⠀⠀⠘⣿⣿⣿⣿⣿⣿⠆⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+echo⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣰⣿⣿⣿⣿⣷⣄⠀⠀⠀⠀⠀⠀⣠⣶⡾⣿⣟⠛⣋⠁⣤⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+echo⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣿⣿⣿⠛⣩⣤⣶⣤⣄⡀⠀⢀⣼⣿⠟⠁⣩⣿⣿⢿⣿⡿⣽⣷⣄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+echo⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢻⣿⢧⣾⣿⣿⣿⣿⣿⣿⡄⠻⠿⠁⢠⣾⣿⠟⣡⣾⣿⠛⢮⡛⢿⣧⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+echo⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣶⢳⣾⣶⡄⠀⠈⢿⢸⣿⣿⣿⡟⣩⣶⣿⣿⣿⣷⣄⢿⡿⢫⣾⣿⣿⠏⣠⣼⡿⠾⣻⣽⣤⣶⡶⣦⣄⠀⢀⣀⣀⡀⠀⠀⠀⠀⠀⠀⠀
+echo⠀⠀⠀⠀⠀⠀⢀⣤⣴⣾⡿⠃⠈⠛⢿⣦⣀⣈⠈⢿⣿⡏⣼⣿⣿⣿⣿⣿⠿⣛⣂⣀⡛⢿⠟⣡⣾⣿⡿⢁⣾⣿⣿⣿⣿⡷⢹⣿⣿⣿⣿⣿⣿⡷⠀⠀⠀⠀⠀⠀
+echo⠀⠀⠀⠀⢀⣾⣼⡿⠋⠉⠀⠀⠀⠀⠀⠹⢿⣼⢧⡈⠻⠀⣿⣿⣿⣿⢋⣴⣿⣿⣿⣿⣿⣷⣄⢿⡟⠋⠀⣾⣿⣿⡿⠉⠩⠷⠿⣿⣿⣿⣿⡿⣫⣶⣷⣄⠀⠀⠀⠀
+echo⠀⠀⠀⠀⣼⣿⠋⠀⢠⣶⣶⣶⣾⣿⣿⣿⣿⣷⡄⣶⣶⣆⣿⣿⣿⢯⣿⣿⣿⣿⣿⣿⣿⣿⣿⡎⠁⣀⣤⣶⣜⢿⠁⢸⣷⡄⠀⠀⠹⣿⣿⣿⣿⣿⣿⣿⣧⣄⠀⠀
+echo⠀⠀⠀⠀⣿⡇⠀⢰⣯⣿⠉⠉⢩⣍⣉⣉⣭⣭⣥⣭⣍⣻⣥⣭⣭⣜⠿⣿⣿⣿⣿⣿⣿⣿⠿⢓⠸⢿⣿⣿⡟⠀⠀⠀⢻⣧⣀⡀⠀⠈⠐⣿⣿⣿⣿⣿⣿⣿⣿⡄
+echo⠀⠀⢀⣼⠿⠁⠀⢸⣿⡇⠀⢸⣿⠿⠟⠿⠿⠿⠿⢿⣿⣟⠛⠛⣻⣥⣴⣶⣄⠉⠛⠿⠟⢱⣿⣿⣿⡄⣀⠈⠀⠀⠀⠀⠈⠉⠛⠁⠀⠀⠀⣹⣿⣿⣿⣿⣿⣿⣿⡇
+echo⣠⡴⠟⠛⠁⠀⠀⢸⣿⡇⠀⣿⣿⠀⠀⢠⣼⣻⣿⣿⣿⣿⣿⣿⠾⣿⠿⠛⠁⣀⣴⣿⣷⠈⣛⠻⠟⠁⣿⡧⠀⠀⠀⠀⠀⠀⠀⠀⠀⣴⣿⣿⣿⣿⣿⣿⣿⣿⡿⠃
+echo⠀⠀⠀⠀⠀⠀⠀⠀⢿⡇⠀⢿⣿⡇⢀⣾⣿⡃⠉⠙⠛⠋⠁⠀⠀⠀⠀⠀⣟⡛⠻⣿⡁⠀⣿⣇⠀⠀⠛⠁⠀⠀⠀⠀⠀⠀⠀⠀⣼⣿⣿⡿⠟⠿⠁⠀⢤⣤⣶⠆
+echo⠀⠀⠀⠀⠀⠀⠀⠀⢸⣿⠇⢸⣿⡇⠸⣿⣿⡇⠀⠀⠀⣤⠾⠻⣿⣿⣶⣿⣿⣿⣦⠻⠃⠀⠈⠋⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣿⣿⣿⠇⠀⠀⠀⢠⣼⣿⡿⠀
+echo⠀⠀⠀⠀⠀⠀⠀⠀⣠⡿⠃⢸⣶⠁⢐⡿⠏⠀⠀⠀⢠⣶⣿⣷⠘⠿⠿⠿⠿⠿⠋⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢿⠋⠀⠀⠀⠀⣀⣼⣿⡿⠁⠀
+echo⠀⠀⠀⠀⠀⠀⠀⠜⠉⠀⠀⠀⢻⣧⠘⣿⣦⠀⠀⢠⣿⣿⣿⣿⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠀⠀⠀⠀⢀⣿⣿⠟⠁⠀⠀
+echo⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣼⡏⠀⠘⣿⣧⠀⣾⣿⣿⣿⣿⣿⣶⡄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠚⠛⠉⠀⠀⠀⠀⠀
+echo⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡾⠟⠀⠀⠀⣼⣿⠆⣿⣿⣿⣿⣿⢿⣿⣥⣴⣶⣶⣦⣄⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+echo⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⡿⠋⠀⢹⣿⣿⡟⣵⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⣄⣠⣤⣤⣤⣤⣶⣦⣤⣄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+echo⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠀⠀⠀⠈⣿⣿⢰⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠿⠿⠿⣧⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+echo⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠘⢿⠎⣿⣿⣿⣿⣿⣿⣿⣿⣿⠟⣋⡉⠉⠛⠉⠀⠈⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+echo⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠿⣿⣿⣿⣿⣿⠟⠉⢼⣿⣿⣦⣆⢀⣠⣴⣦⣤⡴⠂⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+echo⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠉⠉⠁⠀⠀⠀⠀⠙⠛⠿⠿⠿⠿⠿⠛⠉⠀⠀⠀⠀⠀
+echo⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+echo ===================================
+echo Jellyfin Desktop App Installer
+echo ===================================
+echo.
+
+REM This script will:
+REM 1. Request admin privileges
+REM 2. Search for Chrome and Edge browsers
+REM 3. Create the Jellyfin directory
+REM 4. Create the Jellyfin.bat launcher
+REM 5. Download icon from official Jellyfin GitHub
+REM 6. Create desktop and Start Menu shortcuts
+
+REM Check for admin rights and request elevation if needed
+NET SESSION >nul 2>&1
+if %ERRORLEVEL% NEQ 0 (
+    echo Administrator privileges required.
+    echo Requesting elevation...
+    
+    REM Create a temporary VBS script to request elevation
+    echo Set UAC = CreateObject^("Shell.Application"^) > "%TEMP%\elevate.vbs"
+    echo UAC.ShellExecute "%~f0", "", "", "runas", 1 >> "%TEMP%\elevate.vbs"
+    
+    cscript //nologo "%TEMP%\elevate.vbs"
+    del "%TEMP%\elevate.vbs"
+    exit /B
+)
+
+echo Running with administrator privileges...
+
+REM Let user choose installation directory or use default
+set "DEFAULT_INSTALL_DIR=%ProgramFiles%\Jellyfin"
+echo Current default installation directory: %DEFAULT_INSTALL_DIR%
+set /p "CUSTOM_DIR=Enter custom installation directory (or press Enter for default): "
+
+if not "%CUSTOM_DIR%"=="" (
+    set "INSTALL_DIR=%CUSTOM_DIR%"
+) else (
+    set "INSTALL_DIR=%DEFAULT_INSTALL_DIR%"
+)
+
+REM Let user set Jellyfin server IP address and build the URL
+set "DEFAULT_IP=localhost"
+echo.
+echo Please enter the IP address of your Jellyfin server
+set /p "SERVER_IP=Enter Jellyfin server IP address (or press Enter for localhost): "
+
+if not "%SERVER_IP%"=="" (
+    set "IP_ADDRESS=%SERVER_IP%"
+) else (
+    set "IP_ADDRESS=%DEFAULT_IP%"
+)
+
+REM Let user set Jellyfin server port
+set "DEFAULT_PORT=8096"
+set /p "SERVER_PORT=Enter Jellyfin server port (or press Enter for default 8096): "
+
+if not "%SERVER_PORT%"=="" (
+    set "PORT=%SERVER_PORT%"
+) else (
+    set "PORT=%DEFAULT_PORT%"
+)
+
+REM Construct the full Jellyfin URL
+set "JELLYFIN_URL=http://%IP_ADDRESS%:%PORT%/"
+echo.
+echo Using Jellyfin server URL: %JELLYFIN_URL%
+echo.
+
+set ICON_URL=https://raw.githubusercontent.com/jellyfin/jellyfin-server-windows/refs/heads/master/Jellyfin.Windows.Tray/Resources/JellyfinIcon.ico
+set ICON_FILE=%INSTALL_DIR%\Jellyfin.ico
+
+REM Create the installation directory if it doesn't exist
+if not exist "%INSTALL_DIR%" (
+    echo Creating installation directory...
+    mkdir "%INSTALL_DIR%"
+    if !ERRORLEVEL! NEQ 0 (
+        echo Failed to create directory: %INSTALL_DIR%
+        echo Please check permissions and try again.
+        pause
+        exit /B 1
+    )
+)
+
+REM Find Chrome and Edge paths
+echo Searching for Chrome and Edge...
+
+REM Initialize variables as not found
+set CHROME_FOUND=0
+set EDGE_FOUND=0
+set CHROME_PATH=
+set EDGE_PATH=
+
+REM Check for Chrome in common installation paths
+for %%p in (
+    "%ProgramFiles%\Google\Chrome\Application\chrome.exe"
+    "%ProgramFiles(x86)%\Google\Chrome\Application\chrome.exe"
+    "%LocalAppData%\Google\Chrome\Application\chrome.exe"
+) do (
+    if exist %%p (
+        set CHROME_FOUND=1
+        set CHROME_PATH=%%p
+        echo Chrome found at: !CHROME_PATH!
+        goto :found_chrome
+    )
+)
+:found_chrome
+
+REM Check for Edge in common installation paths
+for %%p in (
+    "%ProgramFiles(x86)%\Microsoft\Edge\Application\msedge.exe"
+    "%ProgramFiles%\Microsoft\Edge\Application\msedge.exe"
+) do (
+    if exist %%p (
+        set EDGE_FOUND=1
+        set EDGE_PATH=%%p
+        echo Edge found at: !EDGE_PATH!
+        goto :found_edge
+    )
+)
+:found_edge
+
+REM Confirm at least one browser was found
+if %CHROME_FOUND% EQU 0 (
+    if %EDGE_FOUND% EQU 0 (
+        echo WARNING: Neither Chrome nor Edge found. At least one is recommended.
+        echo The script will continue but may fall back to Internet Explorer.
+        set /p "CONTINUE=Continue anyway? (Y/N): "
+        if /i "!CONTINUE!" NEQ "Y" (
+            echo Installation cancelled.
+            exit /B 1
+        )
+    )
+)
+
+REM Create the Jellyfin.bat file
+echo Creating Jellyfin.bat launcher...
+(
+    echo @echo off
+    echo REM Jellyfin Desktop App Launcher
+    echo.
+    echo REM Jellyfin server URL
+    echo set JELLYFIN_URL=%JELLYFIN_URL%
+    echo.
+    echo REM Create a temporary VBScript file as fallback method
+    echo echo Set oIE = CreateObject^("InternetExplorer.Application"^) ^> "%%TEMP%%\jellyfin_launcher.vbs"
+    echo echo oIE.Navigate "%%JELLYFIN_URL%%" ^>^> "%%TEMP%%\jellyfin_launcher.vbs"
+    echo echo oIE.ToolBar = 0 ^>^> "%%TEMP%%\jellyfin_launcher.vbs"
+    echo echo oIE.StatusBar = 0 ^>^> "%%TEMP%%\jellyfin_launcher.vbs"
+    echo echo oIE.MenuBar = 0 ^>^> "%%TEMP%%\jellyfin_launcher.vbs"
+    echo echo oIE.AddressBar = 0 ^>^> "%%TEMP%%\jellyfin_launcher.vbs"
+    echo echo oIE.Resizable = 1 ^>^> "%%TEMP%%\jellyfin_launcher.vbs"
+    echo echo oIE.FullScreen = True ^>^> "%%TEMP%%\jellyfin_launcher.vbs"
+    echo echo oIE.Visible = 1 ^>^> "%%TEMP%%\jellyfin_launcher.vbs"
+    echo echo While oIE.Busy ^>^> "%%TEMP%%\jellyfin_launcher.vbs"
+    echo echo     WScript.Sleep 100 ^>^> "%%TEMP%%\jellyfin_launcher.vbs"
+    echo echo Wend ^>^> "%%TEMP%%\jellyfin_launcher.vbs"
+    echo.
+) > "%INSTALL_DIR%\Jellyfin.bat"
+
+REM Add Chrome path if found
+if %CHROME_FOUND% EQU 1 (
+    (
+        echo REM Use Chrome if available
+        echo set CHROME_PATH=%CHROME_PATH%
+        echo if exist "%%CHROME_PATH%%" (
+        echo     start "" "%%CHROME_PATH%%" --app="%%JELLYFIN_URL%%" --start-fullscreen
+        echo     goto CleanUp
+        echo ^)
+        echo.
+    ) >> "%INSTALL_DIR%\Jellyfin.bat"
+)
+
+REM Add Edge path if found
+if %EDGE_FOUND% EQU 1 (
+    (
+        echo REM Use Edge if Chrome is not available
+        echo set EDGE_PATH=%EDGE_PATH%
+        echo if exist "%%EDGE_PATH%%" (
+        echo     start "" "%%EDGE_PATH%%" --app="%%JELLYFIN_URL%%" --start-fullscreen
+        echo     goto CleanUp
+        echo ^)
+        echo.
+    ) >> "%INSTALL_DIR%\Jellyfin.bat"
+)
+
+REM Add fallback to IE and cleanup
+(
+    echo REM Fall back to IE via VBScript if modern browsers not available
+    echo echo WARNING: Using Internet Explorer as fallback. For best experience, install Chrome or Edge. ^& pause
+    echo start /wait wscript "%%TEMP%%\jellyfin_launcher.vbs"
+    echo.
+    echo :CleanUp
+    echo REM Clean up
+    echo del "%%TEMP%%\jellyfin_launcher.vbs" ^> nul 2^>^&1
+) >> "%INSTALL_DIR%\Jellyfin.bat"
+
+echo Jellyfin.bat created successfully.
+
+REM Download the icon file using PowerShell (handles redirects better than bitsadmin)
+echo Downloading Jellyfin icon file...
+powershell -Command "& {[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12; Invoke-WebRequest -Uri '%ICON_URL%' -OutFile '%ICON_FILE%'}"
+
+if exist "%ICON_FILE%" (
+    echo Icon downloaded successfully.
+) else (
+    echo Failed to download icon. Will proceed without custom icon.
+)
+
+REM Create desktop shortcut using VBScript
+echo Creating desktop shortcut...
+(
+    echo Set oWS = WScript.CreateObject^("WScript.Shell"^)
+    echo sDesktop = oWS.SpecialFolders^("Desktop"^)
+    echo Set oLink = oWS.CreateShortcut^(sDesktop ^& "\Jellyfin.lnk"^)
+    echo oLink.TargetPath = "%INSTALL_DIR%\Jellyfin.bat"
+    echo oLink.WorkingDirectory = "%INSTALL_DIR%"
+    if exist "%ICON_FILE%" echo oLink.IconLocation = "%ICON_FILE%"
+    echo oLink.Description = "Jellyfin Media Center"
+    echo oLink.WindowStyle = 7
+    echo oLink.Save
+) > "%TEMP%\create_shortcuts.vbs"
+
+REM Ask user if they want a Start Menu shortcut
+set /p "CREATE_START_MENU=Create Start Menu shortcut? (Y/N): "
+if /i "%CREATE_START_MENU%"=="Y" (
+    echo Creating Start Menu shortcut...
+    (
+        echo Set oWS = WScript.CreateObject^("WScript.Shell"^)
+        echo sStartMenu = oWS.SpecialFolders^("StartMenu"^) ^& "\Programs"
+        echo Set oLink = oWS.CreateShortcut^(sStartMenu ^& "\Jellyfin.lnk"^)
+        echo oLink.TargetPath = "%INSTALL_DIR%\Jellyfin.bat"
+        echo oLink.WorkingDirectory = "%INSTALL_DIR%"
+        if exist "%ICON_FILE%" echo oLink.IconLocation = "%ICON_FILE%"
+        echo oLink.Description = "Jellyfin Media Center"
+        echo oLink.WindowStyle = 7
+        echo oLink.Save
+    ) >> "%TEMP%\create_shortcuts.vbs"
+)
+
+REM Run the VBScript to create shortcuts
+cscript //nologo "%TEMP%\create_shortcuts.vbs"
+del "%TEMP%\create_shortcuts.vbs"
+
+echo.
+echo ===================================
+echo Installation Complete!
+echo ===================================
+echo.
+echo Jellyfin Desktop App has been installed to: %INSTALL_DIR%
+echo Connected to Jellyfin server at: %JELLYFIN_URL%
+echo Desktop shortcut created.
+if /i "%CREATE_START_MENU%"=="Y" echo Start Menu shortcut created.
+echo.
+echo Press any key to launch Jellyfin...
+pause > nul
+
+start "" "%INSTALL_DIR%\Jellyfin.bat"
+
+exit /B
